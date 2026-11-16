@@ -357,6 +357,10 @@ ate-800 min-h-screen flex flex-col font-sans antialiased">
           </button>
           <input type="file" id="excelFileInput" accept=".xlsx, .xls, .csv" class="hidden" onchange="importExcel(event)">
           
+          <select id="exportMode" onchange="document.getElementById('exportBlokFilter').value='';refillScopeSelects()" class="border border-slate-300 rounded-lg px-3 py-2.5 text-xs font-bold text-slate-700 bg-white cursor-pointer">
+            <option value="blok">Berdasarkan Kampung / Blok</option>
+            <option value="alamat">Berdasarkan Alamat Tanah</option>
+          </select>
           <select id="exportBlokFilter" class="border border-slate-300 rounded-lg px-3 py-2.5 text-xs font-bold text-slate-700 bg-white cursor-pointer"><option value="">Semua Kampung / Blok</option></select>
           <select id="exportOrientasi" class="border border-slate-300 rounded-lg px-3 py-2.5 text-xs font-bold text-slate-700 bg-white cursor-pointer">
             <option value="portrait">Kertas F4 - Potret</option>
@@ -373,7 +377,7 @@ ate-800 min-h-screen flex flex-col font-sans antialiased">
         <div class="max-w-xl">
           <h3 class="text-base font-bold text-blue-800 flex items-center gap-2">
             <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
-            Cetak Laporan Per Kampung / Blok (Ukuran F4)
+            Cetak Laporan F4 (per Kampung / Blok atau Alamat Tanah)
           </h3>
           <p class="text-xs text-slate-500 mt-2 leading-relaxed font-medium">
             Fitur khusus untuk mencetak rekap data bidang tanah berdasarkan lokasi/alamat tanah. <br>
@@ -381,6 +385,10 @@ ate-800 min-h-screen flex flex-col font-sans antialiased">
           </p>
         </div>
         <div class="flex flex-col gap-3 min-w-[200px]">
+          <select id="printMode" onchange="document.getElementById('printBlokFilter').value='';refillScopeSelects()" class="border border-blue-300 rounded-lg px-3 py-2.5 text-xs focus:outline-none focus:border-blue-500 shadow-sm font-bold text-slate-700 bg-white cursor-pointer">
+            <option value="blok">Berdasarkan Kampung / Blok</option>
+            <option value="alamat">Berdasarkan Alamat Tanah</option>
+          </select>
           <select id="printBlokFilter" class="border border-blue-300 rounded-lg px-3 py-2.5 text-xs focus:outline-none focus:border-blue-500 shadow-sm font-bold text-slate-700 bg-white cursor-pointer">
             <option value="">-- Pilih Kampung / Blok --</option>
           </select>
@@ -629,6 +637,7 @@ ate-800 min-h-screen flex flex-col font-sans antialiased">
     function renderAll() {
       document.getElementById('navTotalBadge').innerText = formatAngka(tanahList.length);
       populateBlokFilter();
+      refillScopeSelects();
       renderStatsAndRekap();
       renderTable();
       if(!document.getElementById('tab-ringkasan').classList.contains('hidden')) updateCharts();
@@ -929,9 +938,10 @@ ate-800 min-h-screen flex flex-col font-sans antialiased">
       const val = forced || document.getElementById('printBlokFilter').value;
       if (!val) return alert('Pilih Kampung / Blok yang ingin dicetak terlebih dahulu!');
       const all = val === '__ALL__';
-      const filtered = sortedList(tanahList.filter(t => all || t.blok === val));
+      const key = document.getElementById('printMode').value;
+      const filtered = sortedList(tanahList.filter(t => all || (t[key] || '').trim() === val), key);
       if (filtered.length === 0) return alert('Data kosong untuk pilihan tersebut.');
-      document.getElementById('printBlokTitle').innerText = all ? 'SELURUH KAMPUNG / BLOK' : `KAMPUNG / BLOK: ${val.toUpperCase()}`;
+      document.getElementById('printBlokTitle').innerText = all ? 'SELURUH DATA' : `${key === 'alamat' ? 'ALAMAT TANAH' : 'KAMPUNG / BLOK'}: ${val.toUpperCase()}`;
       const td = 'border: 1px solid black; padding: 6px;';
       let total = 0;
       document.getElementById('printTableBody').innerHTML = filtered.map((it, i) => {
@@ -1100,7 +1110,8 @@ ate-800 min-h-screen flex flex-col font-sans antialiased">
       if (typeof ExcelJS === 'undefined') return alert('Pustaka ExcelJS belum termuat. Periksa koneksi internet lalu muat ulang halaman.');
       const blokSel = document.getElementById('exportBlokFilter').value;
       const landscape = document.getElementById('exportOrientasi').value === 'landscape';
-      const list = sortedList(tanahList.filter(t => !blokSel || t.blok === blokSel));
+      const key = document.getElementById('exportMode').value;
+      const list = sortedList(tanahList.filter(t => !blokSel || (t[key] || '').trim() === blokSel), key);
       if (list.length === 0) return alert('Tidak ada data untuk pilihan tersebut.');
       try {
         const wb = new ExcelJS.Workbook();
@@ -1110,7 +1121,7 @@ ate-800 min-h-screen flex flex-col font-sans antialiased">
         const grey = (argb) => ({ type: 'pattern', pattern: 'solid', fgColor: { argb } });
         const F = (o) => Object.assign({ name: 'Arial', size: 10 }, o || {});
         const numFmt = list.some(t => !Number.isInteger(Number(t.luas) || 0)) ? '#,##0.00' : '#,##0';
-        const subtitle = blokSel ? 'KAMPUNG / BLOK: ' + blokSel.toUpperCase() : 'SELURUH KAMPUNG / BLOK';
+        const subtitle = blokSel ? (key === 'alamat' ? 'ALAMAT TANAH: ' : 'KAMPUNG / BLOK: ') + blokSel.toUpperCase() : 'SELURUH DATA';
         const HR = 9;
 
         const makeSheet = (name, title, headers, widths, kinds, rows) => {
@@ -1188,14 +1199,14 @@ ate-800 min-h-screen flex flex-col font-sans antialiased">
 
         const rekap = {};
         list.forEach(t => {
-          const b = (t.blok || 'Belum Ditentukan').trim();
+          const b = (t[key] || 'Belum Ditentukan').trim();
           const r = rekap[b] || (rekap[b] = { n: 0, p: 0, np: 0, pm: 0 });
           const l = Number(t.luas) || 0;
           r.n++;
           if (t.kelas === 'Produktif') r.p += l; else if (t.kelas === 'Tidak Produktif') r.np += l; else r.pm += l;
         });
-        makeSheet('Rekap per Blok', 'REKAPITULASI LUAS PER KAMPUNG / BLOK',
-          ['Kampung / Blok', 'Jumlah Bidang', 'Produktif (m²)', 'Tidak Produktif (m²)', 'Pemukiman (m²)', 'Total Luas (m²)'],
+        makeSheet('Rekap per Blok', 'REKAPITULASI LUAS PER ' + (key === 'alamat' ? 'ALAMAT TANAH' : 'KAMPUNG / BLOK'),
+          [key === 'alamat' ? 'Alamat Tanah' : 'Kampung / Blok', 'Jumlah Bidang', 'Produktif (m²)', 'Tidak Produktif (m²)', 'Pemukiman (m²)', 'Total Luas (m²)'],
           [28, 14, 17, 19, 17, 17],
           ['l', 'i', 'n', 'n', 'n', 'n'],
           Object.keys(rekap).sort().map(b => { const r = rekap[b]; return [b, r.n, r.p, r.np, r.pm, r.p + r.np + r.pm]; }));
@@ -1248,14 +1259,27 @@ ate-800 min-h-screen flex flex-col font-sans antialiased">
     }
 
     function formatAngka(num) { return (Number(num) || 0).toLocaleString('id-ID', { maximumFractionDigits: 2 }); }
+    function refillScopeSelects() {
+      [['printMode', 'printBlokFilter', true], ['exportMode', 'exportBlokFilter', false]].forEach(([m, sId, isPrint]) => {
+        const mode = document.getElementById(m), sel = document.getElementById(sId);
+        if (!mode || !sel) return;
+        const key = mode.value, cur = sel.value;
+        const label = key === 'alamat' ? 'Alamat Tanah' : 'Kampung / Blok';
+        const vals = Array.from(new Set(tanahList.map(t => (t[key] || '').trim()).filter(v => v && v !== '-'))).sort((a, b) => a.localeCompare(b, 'id'));
+        let h = isPrint ? `<option value="">-- Pilih ${label} --</option><option value="__ALL__">★ Semua Data</option>` : `<option value="">Semua ${label}</option>`;
+        vals.forEach(v => { h += `<option value="${esc(v)}">${esc(v)}</option>`; });
+        sel.innerHTML = h; sel.value = cur;
+      });
+    }
     function esc(v) { return String(v == null ? '' : v).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
     function tglIndo() {
       const m = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
       const d = new Date();
       return `${d.getDate()} ${m[d.getMonth()]} ${d.getFullYear()}`;
     }
-    function sortedList(a) {
-      return a.slice().sort((x, y) => (x.blok || '').localeCompare(y.blok || '', 'id') || (x.nama || '').localeCompare(y.nama || '', 'id'));
+    function sortedList(a, k) {
+      k = k || 'blok';
+      return a.slice().sort((x, y) => (x[k] || '').localeCompare(y[k] || '', 'id') || (x.nama || '').localeCompare(y.nama || '', 'id'));
     }
   </script>
 
