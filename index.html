@@ -1,69 +1,113 @@
 <!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
+<!-- saved from url=(0043)https://siperta-desa-gunungsari.vercel.app/ -->
+<html lang="id"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>body {transition: opacity ease-in 0.2s; } 
+body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relative; } 
+</style>
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SIPERTA GUNUNGSARI</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <!-- FAVICON (Logo di Tab Browser) -->
+  <link rel="icon" href="data:image/jpeg;base64,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" type="image/jpeg">
+  
+  
+  <style>
+    /* CSS Animasi untuk Logo seperti Stasiun TV */
+    @keyframes spin-tv {
+      0% { transform: perspective(400px) rotateY(0deg); }
+      100% { transform: perspective(400px) rotateY(360deg); }
+    }
+  </style>
+
+  <style>
+    .print-only { display: none; }
+    @media print {
+      body * { visibility: hidden; }
+      header, main, footer, #recordModal { display: none !important; }
+      .print-only, .print-only * { visibility: visible; }
+      .print-only thead { display: table-header-group; }
+      .print-only tr { page-break-inside: avoid; }
+      .print-only { 
+        display: block !important; 
+        position: absolute; 
+        left: 0; 
+        top: 0; 
+        width: 100%; 
+        color: black !important;
+      }
+      @page {
+        size: 215.9mm 330.2mm; /* F4 / Folio Size */
+        margin: 15mm;
+      }
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/exceljs@4.4.0/dist/exceljs.min.js"></script>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+    <style>
+      @keyframes pan-bg {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+      .animated-bg {
+        animation: pan-bg 40s linear infinite alternate;
+      }
+    </style>
 </head>
-<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col font-sans">
+<body class="bg-slate-50 text-sl
 
-  <!-- Audio Player Tersembunyi -->
-  <audio id="bgMusic" loop></audio>
+ate-800 min-h-screen flex flex-col font-sans antialiased">
 
-  <!-- Header Navigasi -->
-  <header class="bg-[#1a5f53] text-white shadow-md sticky top-0 z-40">
-    <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-4">
+  
+
+    <!-- Header Navigasi -->
+  <header class="text-white shadow-xl sticky top-0 z-40" style="background: linear-gradient(135deg, #0f766e 0%, #042f2e 100%); border-bottom: 4px solid #14b8a6;">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex flex-wrap justify-between items-center gap-4">
+      
       <div class="flex items-center gap-3">
-        <!-- Fitur Pilih Logo Lokal -->
-        <div onclick="document.getElementById('logoInput').click()" title="Klik untuk mengubah logo" class="bg-white p-1.5 rounded-lg shadow-sm cursor-pointer hover:bg-slate-200 transition">
-          <img id="appLogo" src="Seal_of_Tasikmalaya_Regency.svg.jpg" 
-               alt="Logo" 
-               class="h-10 w-10 object-contain"
-               onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 24 24\' stroke=\'%231a5f53\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z\'/></svg>';">
-        </div>
-        <input type="file" id="logoInput" accept="image/*" class="hidden" onchange="changeLogo(event)">
-        
-        <div>
-          <h1 class="text-xl font-bold tracking-wide flex items-center gap-2">
-            SIPERTA GUNUNGSARI
-          </h1>
-          <p class="text-xs text-emerald-100 font-medium" id="clockDisplay">Memuat waktu...</p>
+        <div class="flex flex-col py-1">
+          <h1 class="text-2xl font-black tracking-wider flex items-center gap-2 text-white drop-shadow-sm">SIPERTA GUNUNGSARI</h1>
+          <p class="text-xs text-teal-200 font-semibold tracking-wide">Sistem Informasi Pertanahan Desa Gunungsari</p>
+          <p class="text-[11px] text-teal-300 font-medium mt-0.5" id="clockDisplay">Senin, 2 November 2026 | Pukul 01.54.49</p>
         </div>
       </div>
       
-      <div class="flex items-center gap-2">
-        <!-- Fitur Pilih Musik Lokal -->
-        <button onclick="document.getElementById('audioInput').click()" id="btnMusic" class="bg-[#0f443b] hover:bg-[#0a3029] border border-[#2b7a6c] text-white text-xs font-semibold px-4 py-2 rounded-lg shadow transition flex items-center gap-2">
-          <span>🎵 Pilih Musik Alam</span>
-        </button>
-        <input type="file" id="audioInput" accept="audio/*" class="hidden" onchange="loadAndPlayMusic(event)">
-
-        <button onclick="openModal()" class="bg-emerald-500 hover:bg-emerald-400 border border-emerald-400 text-white text-xs font-bold px-4 py-2 rounded-lg shadow transition flex items-center gap-2">
+      <div class="flex items-center gap-2.5">
+        <button onclick="openModal()" class="bg-emerald-500 hover:bg-emerald-600 border border-emerald-400 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow-lg transition flex items-center gap-2">
           <span>+ Tambah Bidang</span>
         </button>
         
-        <button onclick="window.print()" class="bg-slate-700 hover:bg-slate-600 text-white border border-slate-500 text-xs font-bold px-4 py-2 rounded-lg shadow transition flex items-center gap-2">
+        <button onclick="forceSync()" id="btnSync" class="bg-slate-700/80 hover:bg-slate-700 text-white border border-slate-600 text-xs font-bold px-3.5 py-2.5 rounded-xl shadow-lg transition flex items-center gap-2">
+          <span>🔄 Sinkron Data</span>
+        </button>
+        <button onclick="printLaporanBlok('__ALL__')" class="bg-slate-700/80 hover:bg-slate-700 text-white border border-slate-600 text-xs font-bold px-4 py-2.5 rounded-xl shadow-lg transition flex items-center gap-2">
           <span>🖨 Cetak</span>
         </button>
       </div>
     </div>
     
     <!-- Tab Navigasi Menu -->
-    <div class="max-w-7xl mx-auto px-4 flex gap-6 text-sm font-semibold text-emerald-100/70 overflow-x-auto">
-      <button onclick="switchTab('tab-ringkasan')" id="nav-ringkasan" class="py-3 text-white border-b-[3px] border-emerald-400 transition whitespace-nowrap">Ringkasan & Analisis</button>
+    <div class="max-w-7xl mx-auto px-4 flex gap-6 text-sm font-bold text-teal-100/70 overflow-x-auto border-t border-teal-900/50">
+      <button onclick="switchTab('tab-ringkasan')" id="nav-ringkasan" class="py-3 transition whitespace-nowrap hover:text-white">Ringkasan &amp; Analisis</button>
       <button onclick="switchTab('tab-rekap')" id="nav-rekap" class="py-3 hover:text-white transition whitespace-nowrap">Rekap per Kampung/Blok</button>
-      <button onclick="switchTab('tab-data')" id="nav-data" class="py-3 hover:text-white transition whitespace-nowrap flex items-center gap-2">Data Bidang Tanah <span id="navTotalBadge" class="bg-emerald-600 text-white text-[10px] px-2 py-0.5 rounded-full shadow-inner">0</span></button>
-      <button onclick="switchTab('tab-import')" id="nav-import" class="py-3 hover:text-white transition whitespace-nowrap">Import, Export & Backup</button>
+      <button onclick="switchTab('tab-data')" id="nav-data" class="py-3 transition whitespace-nowrap flex items-center gap-2 hover:text-white">Data Bidang Tanah <span id="navTotalBadge" class="bg-emerald-500 text-white text-[10px] px-2.5 py-0.5 rounded-full shadow-inner font-black">0</span></button>
+      <button onclick="switchTab('tab-import')" id="nav-import" class="py-3 transition whitespace-nowrap text-white border-b-[3px] border-emerald-400">Import, Export &amp; Cetak</button>
+    </div>
+
+    <!-- Teks Berjalan (Running Text) -->
+    <div class="bg-slate-900/90 text-teal-200 text-xs py-2 px-4 overflow-hidden border-t border-teal-900/80">
+      <marquee behavior="scroll" direction="left" scrollamount="5" class="font-semibold tracking-wide">
+        Selamat Datang di Portal Resmi Sistem Informasi Pertanahan (SIPERTA) Desa Gunungsari, Kecamatan Cikatomas, Kabupaten Tasikmalaya. Seluruh pembaruan data bidang tanah terintegrasi secara real-time. Hubungi Kasi Pemerintahan untuk perbaikan data administrasi pertanahan.
+      </marquee>
     </div>
   </header>
 
   <main class="max-w-7xl mx-auto px-4 py-6 flex-grow">
 
     <!-- TAB 1: Ringkasan & Analisis -->
-    <div id="tab-ringkasan" class="space-y-6 block animate-in fade-in duration-300">
+    <div id="tab-ringkasan" class="space-y-6 block animate-in fade-in duration-300 hidden">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <!-- Kartu Total -->
         <div class="bg-white p-5 rounded-xl border-t-4 border-slate-200 shadow-sm flex justify-between items-start">
@@ -73,15 +117,15 @@
               <span id="statTotalLuas" class="text-3xl font-extrabold text-slate-800">0</span>
               <span class="text-base font-bold text-slate-800">m²</span>
             </div>
-            <div id="statTotalSub" class="text-xs text-emerald-600 font-bold mt-1">≈ 0 Hektar (0 Bidang)</div>
+            <div id="statTotalSub" class="text-xs text-emerald-600 font-bold mt-1">≈ 0.00 Hektar (0 Bidang)</div>
           </div>
           <div class="bg-emerald-50 p-2.5 rounded-xl text-emerald-600">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h16v16H4z M9 4v16 M15 4v16 M4 9h16 M4 15h16"/></svg>
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h16v16H4z M9 4v16 M15 4v16 M4 9h16 M4 15h16"></path></svg>
           </div>
         </div>
 
         <!-- Kartu Produktif -->
-        <div class="bg-white p-5 rounded-xl border-t-4 border-emerald-400 shadow-sm flex justify-between items-start">
+        <div class="bg-white p-5 rounded-xl border-t-4 border-blue-500 shadow-sm flex justify-between items-start">
           <div>
             <span class="text-[10px] font-bold text-emerald-600 uppercase tracking-wider flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-emerald-500"></span> Tanah Produktif</span>
             <div class="flex items-baseline gap-1 mt-1">
@@ -91,12 +135,12 @@
             <div id="statProdSub" class="text-xs text-slate-500 mt-1 font-medium">0 bidang (0%)</div>
           </div>
           <div class="bg-emerald-50 p-2.5 rounded-xl text-emerald-600">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
           </div>
         </div>
 
         <!-- Kartu Tidak Produktif -->
-        <div class="bg-white p-5 rounded-xl border-t-4 border-amber-400 shadow-sm flex justify-between items-start">
+        <div class="bg-white p-5 rounded-xl border-t-4 border-amber-500 shadow-sm flex justify-between items-start">
           <div>
             <span class="text-[10px] font-bold text-amber-600 uppercase tracking-wider flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-amber-500"></span> Tidak Produktif</span>
             <div class="flex items-baseline gap-1 mt-1">
@@ -106,69 +150,87 @@
             <div id="statNonProdSub" class="text-xs text-slate-500 mt-1 font-medium">0 bidang (0%)</div>
           </div>
           <div class="bg-amber-50 p-2.5 rounded-xl text-amber-600">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
           </div>
         </div>
 
         <!-- Kartu Pemukiman -->
-        <div class="bg-white p-5 rounded-xl border-t-4 border-blue-400 shadow-sm flex justify-between items-start">
+        <div class="bg-white p-5 rounded-xl border-t-4 border-indigo-500 shadow-sm flex justify-between items-start">
           <div>
-            <span class="text-[10px] font-bold text-blue-600 uppercase tracking-wider flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-blue-500"></span> Tanah Pemukiman</span>
+            <span class="text-[10px] font-bold text-indigo-600 uppercase tracking-wider flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-indigo-500"></span> Tanah Pemukiman</span>
             <div class="flex items-baseline gap-1 mt-1">
-              <span id="statPem" class="text-3xl font-extrabold text-blue-700">0</span>
-              <span class="text-base font-bold text-blue-700">m²</span>
+              <span id="statPem" class="text-3xl font-extrabold text-indigo-700">0</span>
+              <span class="text-base font-bold text-indigo-700">m²</span>
             </div>
             <div id="statPemSub" class="text-xs text-slate-500 mt-1 font-medium">0 bidang (0%)</div>
           </div>
-          <div class="bg-blue-50 p-2.5 rounded-xl text-blue-600">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          <div class="bg-indigo-50 p-2.5 rounded-xl text-indigo-600">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
           </div>
         </div>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
-        <!-- Grafik Donat -->
+      <!-- Area Grafik Visual 2 Kolom (Kelas & Status) -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <!-- Grafik Donat (Kelas Tanah) -->
         <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
           <div class="flex justify-between items-center mb-4">
             <h3 class="font-bold text-slate-800 text-sm">Distribusi Kelas Tanah</h3>
             <span class="text-[10px] bg-slate-100 px-2 py-1 rounded font-semibold text-slate-500">Berdasarkan Luas</span>
           </div>
-          <div class="relative h-56 w-full flex justify-center items-center">
-            <canvas id="chartDonut"></canvas>
+          <div class="relative h-52 w-full flex justify-center items-center">
+            <canvas id="chartDonut" width="641" height="260" style="display: block; box-sizing: border-box; height: 208px; width: 513px;"></canvas>
             <div id="donutEmpty" class="absolute inset-0 flex items-center justify-center text-xs font-medium text-slate-400 hidden">Belum ada data</div>
           </div>
           <div class="grid grid-cols-3 gap-2 mt-6">
-            <div class="bg-emerald-50 text-center p-2.5 rounded-lg border border-emerald-100">
+            <div class="bg-emerald-50 text-center p-2 rounded-lg border border-emerald-100">
               <div id="pctProd" class="text-sm font-extrabold text-emerald-700">0%</div>
               <div class="text-[10px] font-semibold text-emerald-600/80 mt-0.5">Produktif</div>
             </div>
-            <div class="bg-amber-50 text-center p-2.5 rounded-lg border border-amber-100">
+            <div class="bg-amber-50 text-center p-2 rounded-lg border border-amber-100">
               <div id="pctNonProd" class="text-sm font-extrabold text-amber-700">0%</div>
               <div class="text-[10px] font-semibold text-amber-600/80 mt-0.5">Tidak Prod.</div>
             </div>
-            <div class="bg-blue-50 text-center p-2.5 rounded-lg border border-blue-100">
-              <div id="pctPem" class="text-sm font-extrabold text-blue-700">0%</div>
-              <div class="text-[10px] font-semibold text-blue-600/80 mt-0.5">Pemukiman</div>
+            <div class="bg-indigo-50 text-center p-2 rounded-lg border border-blue-100">
+              <div id="pctPem" class="text-sm font-extrabold text-indigo-700">0%</div>
+              <div class="text-[10px] font-semibold text-indigo-600/80 mt-0.5">Pemukiman</div>
             </div>
           </div>
         </div>
 
-        <!-- Grafik Bar -->
-        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm lg:col-span-2">
+        <!-- Grafik Pie (Status Kepemilikan) -->
+        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
+          <div class="flex justify-between items-center mb-4">
+            <h3 class="font-bold text-slate-800 text-sm">Status Kepemilikan</h3>
+            <span class="text-[10px] bg-slate-100 px-2 py-1 rounded font-semibold text-slate-500">Berdasarkan Jumlah Bidang</span>
+          </div>
+          <div class="relative h-52 w-full flex justify-center items-center">
+            <canvas id="chartStatus" width="641" height="260" style="display: block; box-sizing: border-box; height: 208px; width: 513px;"></canvas>
+            <div id="statusEmpty" class="absolute inset-0 flex items-center justify-center text-xs font-medium text-slate-400 hidden">Belum ada data</div>
+          </div>
+          <div class="text-center mt-6">
+            <p class="text-[11px] text-slate-500 font-medium">Data menampilkan komposisi legalitas / hak penguasaan tanah yang ada di seluruh dusun.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grafik Bar -->
+      <div class="grid grid-cols-1 gap-4">
+        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
           <div class="flex justify-between items-center mb-4">
             <div>
               <h3 class="font-bold text-slate-800 text-sm flex items-center gap-2">
-                <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
                 Perbandingan Luas per Blok / Kampung
               </h3>
               <p class="text-[10px] text-slate-500 mt-0.5">Akumulasi luas tanah untuk 5 blok terbesar</p>
             </div>
-            <button onclick="switchTab('tab-rekap')" class="text-xs text-emerald-600 font-bold hover:text-emerald-800 transition flex items-center gap-1 bg-emerald-50 px-3 py-1.5 rounded-lg">
-              Lihat Detail <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            <button onclick="switchTab('tab-rekap')" class="text-xs text-emerald-600 font-bold hover:text-emerald-800 transition flex items-center gap-1 bg-emerald-50 px-3 py-1.5 rounded-lg border border-emerald-100">
+              Lihat Detail <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
             </button>
           </div>
           <div class="relative h-64 w-full mt-4">
-            <canvas id="chartBar"></canvas>
+            <canvas id="chartBar" width="1354" height="320" style="display: block; box-sizing: border-box; height: 256px; width: 1083.6px;"></canvas>
             <div id="barEmpty" class="absolute inset-0 flex items-center justify-center text-xs font-medium text-slate-400 hidden">Belum ada data</div>
           </div>
         </div>
@@ -189,20 +251,18 @@
                 <th class="px-5 py-3 text-center">Jumlah Bidang</th>
                 <th class="px-5 py-3 text-right text-emerald-700">Produktif (m²)</th>
                 <th class="px-5 py-3 text-right text-amber-700">Tdk Produktif (m²)</th>
-                <th class="px-5 py-3 text-right text-blue-700">Pemukiman (m²)</th>
+                <th class="px-5 py-3 text-right text-indigo-700">Pemukiman (m²)</th>
                 <th class="px-5 py-3 text-right font-extrabold text-slate-900">Total Luas (m²)</th>
               </tr>
             </thead>
-            <tbody id="rekapBlokBody" class="divide-y divide-slate-200 text-slate-700 text-sm">
-              <!-- Diisi JavaScript -->
-            </tbody>
+            <tbody id="rekapBlokBody" class="divide-y divide-slate-200 text-slate-700 text-sm"><tr><td colspan="6" class="text-center py-10 font-bold text-slate-400">Belum ada data terekap.</td></tr></tbody>
           </table>
         </div>
       </div>
     </div>
 
     <!-- TAB 3: Data Bidang Tanah -->
-    <div id="tab-data" class="hidden animate-in fade-in duration-300 space-y-4">
+    <div id="tab-data" class="animate-in fade-in duration-300 space-y-4 hidden">
       <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
         
         <!-- Filter dan Tampilkan Jumlah Baris -->
@@ -221,9 +281,7 @@
           <input type="text" id="searchInput" oninput="renderTable()" placeholder="Cari Nama, NIK, Alamat..." class="border border-slate-300 rounded-lg px-3 py-2 text-xs w-full sm:w-48 focus:outline-none focus:border-emerald-500 shadow-sm font-medium">
           
           <!-- Filter Blok -->
-          <select id="filterBlok" onchange="renderTable()" class="border border-slate-300 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-emerald-500 shadow-sm font-medium">
-            <option value="">Semua Blok</option>
-          </select>
+          <select id="filterBlok" onchange="renderTable()" class="border border-slate-300 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-emerald-500 shadow-sm font-medium"><option value="">Semua Blok / Kampung</option></select>
           
           <!-- Filter Kelas -->
           <select id="filterKelas" onchange="renderTable()" class="border border-slate-300 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-emerald-500 shadow-sm font-medium">
@@ -233,8 +291,8 @@
             <option value="Pemukiman">Pemukiman</option>
           </select>
 
-          <!-- Filter Status Kepemilikan (BARU) -->
-          <select id="filterStatus" onchange="renderTable()" class="border border-slate-300 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-emerald-500 shadow-sm font-medium">
+          <!-- Filter Status Kepemilikan -->
+          <select id="filterStatus" onchange="renderTable()" class="border border-slate-300 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-emerald-500 shadow-sm font-bold text-emerald-800">
             <option value="">Semua Status</option>
             <option value="Tanah Milik (Pribadi)">Tanah Milik</option>
             <option value="Tanah Desa (Kas Desa)">Tanah Desa</option>
@@ -246,12 +304,12 @@
         
         <!-- Info Halaman & Lompat Halaman -->
         <div class="flex items-center gap-3 w-full lg:w-auto">
-          <div class="text-xs text-slate-600 font-bold bg-slate-100 px-3 py-2 rounded-lg border border-slate-200 whitespace-nowrap" id="tableInfo">0 data</div>
+          <div class="text-xs text-slate-600 font-bold bg-slate-100 px-3 py-2 rounded-lg border border-slate-200 whitespace-nowrap" id="tableInfo">Menampilkan 0 - 0 dari 0 Bidang (Hal 1 / 1)</div>
           
           <div class="flex items-center gap-1 bg-emerald-50 px-2 py-1.5 rounded-lg border border-emerald-200">
             <label class="text-[10px] font-bold text-emerald-800 whitespace-nowrap">Ke Hal:</label>
             <input type="number" id="jumpPageInput" min="1" class="w-12 border border-emerald-300 rounded px-1.5 py-1 text-xs text-center focus:outline-none focus:border-emerald-600 font-bold text-emerald-700">
-            <button onclick="jumpToPage()" class="bg-emerald-600 hover:bg-emerald-700 text-white text-[10px] font-bold px-2 py-1.5 rounded transition">GO</button>
+            <button onclick="jumpToPage()" class="bg-blue-600 hover:bg-blue-700 text-white text-[10px] font-bold px-2 py-1.5 rounded transition">GO</button>
           </div>
         </div>
       </div>
@@ -266,83 +324,83 @@
                 <th class="px-4 py-3.5">NIK</th>
                 <th class="px-4 py-3.5">Kampung / Blok</th>
                 <th class="px-4 py-3.5">Alamat Tanah</th>
-                <th class="px-4 py-3.5">Status</th>
+                <th class="px-4 py-3.5 text-indigo-700">Status Kepemilikan</th>
                 <th class="px-4 py-3.5">Kelas Tanah</th>
                 <th class="px-4 py-3.5 text-right">Luas (m²)</th>
                 <th class="px-4 py-3.5 text-center w-28">Aksi</th>
               </tr>
             </thead>
-            <tbody id="dataTableBody" class="divide-y divide-slate-100 text-slate-700">
-              <!-- Data baris -->
-            </tbody>
+            <tbody id="dataTableBody" class="divide-y divide-slate-100 text-slate-700"><tr><td colspan="9" class="text-center py-12 font-bold text-slate-400 text-sm">Data bidang tanah kosong.</td></tr></tbody>
           </table>
         </div>
         
         <!-- Pagination Area -->
-        <div class="bg-slate-50 border-t border-slate-200 px-5 py-4 flex flex-wrap justify-center items-center gap-2 shadow-inner" id="paginationControls">
-          <!-- Tombol halaman di-generate JS -->
-        </div>
+        <div class="bg-slate-50 border-t border-slate-200 px-5 py-4 flex flex-wrap justify-center items-center gap-2 shadow-inner" id="paginationControls"></div>
       </div>
     </div>
 
-    <!-- TAB 4: Import, Export & Backup -->
-    <div id="tab-import" class="hidden animate-in fade-in duration-300 space-y-6">
+    <!-- TAB 4: Import, Export & Cetak -->
+    <div id="tab-import" class="animate-in fade-in duration-300 space-y-6">
+      
+      <!-- Section Excel -->
       <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex flex-col md:flex-row gap-6 items-center justify-between">
         <div class="max-w-xl">
           <h3 class="text-base font-bold text-slate-800 flex items-center gap-2">
-            <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
             Import / Export Excel
           </h3>
-          <p class="text-xs text-slate-500 mt-2 leading-relaxed font-medium">Gunakan fitur ini untuk mengimpor data masal dari file Excel. Sistem otomatis menghapus teks "L=" atau "m2". Anda juga dapat mengekspor data yang sudah rapi ke format Excel (.xlsx) untuk laporan fisik desa.</p>
+          <p class="text-xs text-slate-500 mt-2 leading-relaxed font-medium">Gunakan fitur ini untuk mengimpor data masal dari file Excel. Sistem otomatis menghapus teks "L=" atau "m2". Hasil export berupa file Excel (.xlsx) lengkap dengan kop desa, border, total, dan tanda tangan, sudah diatur untuk kertas F4 (Folio) sehingga langsung siap cetak.</p>
         </div>
         <div class="flex flex-col gap-3 min-w-[200px]">
           <button onclick="document.getElementById('excelFileInput').click()" class="bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-300 text-sm font-bold px-4 py-3 rounded-lg transition text-center">
             📥 Import File Excel
           </button>
           <input type="file" id="excelFileInput" accept=".xlsx, .xls, .csv" class="hidden" onchange="importExcel(event)">
+          
+          <select id="exportBlokFilter" class="border border-slate-300 rounded-lg px-3 py-2.5 text-xs font-bold text-slate-700 bg-white cursor-pointer"><option value="">Semua Kampung / Blok</option></select>
+          <select id="exportOrientasi" class="border border-slate-300 rounded-lg px-3 py-2.5 text-xs font-bold text-slate-700 bg-white cursor-pointer">
+            <option value="portrait">Kertas F4 - Potret</option>
+            <option value="landscape">Kertas F4 - Lanskap</option>
+          </select>
           <button onclick="exportExcel()" class="bg-slate-800 hover:bg-slate-700 text-white text-sm font-bold px-4 py-3 rounded-lg shadow transition text-center">
-            📤 Export ke Excel
+            📤 Export Excel (F4 Rapi)
           </button>
         </div>
       </div>
 
-      <div class="bg-white p-6 rounded-xl border border-blue-200 shadow-sm flex flex-col md:flex-row gap-6 items-center justify-between">
+      <!-- Section Cetak Laporan -->
+      <div class="bg-indigo-50/30 p-6 rounded-xl border border-blue-200 shadow-sm flex flex-col md:flex-row gap-6 items-center justify-between">
         <div class="max-w-xl">
           <h3 class="text-base font-bold text-blue-800 flex items-center gap-2">
-            <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"/></svg>
-            Sistem Pindah Komputer (Backup JSON)
+            <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+            Cetak Laporan Per Kampung / Blok (Ukuran F4)
           </h3>
           <p class="text-xs text-slate-500 mt-2 leading-relaxed font-medium">
-            Data tersimpan aman di browser Anda saat ini. Jika ingin memindahkannya ke laptop lain:<br>
-            1. Klik <b>Backup Database</b> (File .json terunduh).<br>
-            2. Pindahkan file tersebut ke flashdisk.<br>
-            3. Di komputer tujuan, klik <b>Restore Database</b> dan masukkan file tersebut.
+            Fitur khusus untuk mencetak rekap data bidang tanah berdasarkan lokasi/alamat tanah. <br>
+            Sistem otomatis mengatur format kertas ke <b>F4 (Folio)</b> yang rapi, lengkap dengan kop surat dan area tanda tangan Kasipem.
           </p>
         </div>
         <div class="flex flex-col gap-3 min-w-[200px]">
-          <button onclick="backupData()" class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold px-4 py-3 rounded-lg shadow transition text-center">
-            💾 Backup Database
-          </button>
-          <button onclick="document.getElementById('restoreFileInput').click()" class="bg-white hover:bg-blue-50 text-blue-700 border border-blue-300 text-sm font-bold px-4 py-3 rounded-lg transition text-center">
-            📂 Restore Database
-          </button>
-          <input type="file" id="restoreFileInput" accept=".json" class="hidden" onchange="restoreData(event)">
-          
-          <button onclick="resetData()" class="mt-4 text-xs text-rose-600 hover:text-rose-800 font-bold underline text-center">
-            Kosongkan Seluruh Data
+          <select id="printBlokFilter" class="border border-blue-300 rounded-lg px-3 py-2.5 text-xs focus:outline-none focus:border-blue-500 shadow-sm font-bold text-slate-700 bg-white cursor-pointer">
+            <option value="">-- Pilih Kampung / Blok --</option>
+          </select>
+          <button onclick="printLaporanBlok()" class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold px-4 py-3 rounded-lg shadow transition text-center flex justify-center items-center gap-2">
+            🖨 Cetak Laporan F4
           </button>
         </div>
       </div>
+    </div>
+
     </div>
 
   </main>
 
   <!-- Footer -->
   <footer class="mt-auto border-t border-slate-200 bg-white">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center text-[10px] text-slate-500 gap-2 font-medium">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center text-[10px] text-slate-500 font-medium gap-2">
       <p>© Hak Cipta Pemerintahan Desa Gunungsari.</p>
       <div class="flex gap-4 items-center">
-        <span class="flex items-center gap-1 text-emerald-600 font-bold"><span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shadow"></span> Penyimpanan Lokal Aktif</span>
+        <span class="flex items-center gap-1 text-emerald-600 font-bold"><span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shadow"></span> Cloud Database Aktif (Online)</span>
         <span class="hidden md:inline">•</span>
         <span class="font-bold text-slate-800">KAB. TASIKMALAYA</span>
       </div>
@@ -350,20 +408,20 @@
   </footer>
 
   <!-- Modal Form -->
-  <div id="recordModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4">
-    <div class="bg-white rounded-xl shadow-2xl w-full max-w-lg overflow-hidden transform scale-95 transition-transform duration-200" id="modalContent">
-      <div class="bg-[#1a5f53] text-white px-5 py-4 flex justify-between items-center border-b-4 border-emerald-400">
-        <h3 id="modalTitle" class="font-bold text-sm tracking-wide">Tambah Data Bidang</h3>
-        <button onclick="closeModal()" class="text-emerald-200 hover:text-white transition text-xl font-bold">&times;</button>
+  <div id="recordModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-xl shadow-2xl w-full max-w-lg overflow-hidden transform transition-transform duration-200 scale-95" id="modalContent">
+      <div class="bg-[#0f172a] text-white px-5 py-4 flex justify-between items-center border-b-4 border-blue-500">
+        <h3 id="modalTitle" class="font-bold text-sm tracking-wide">Edit Data Bidang</h3>
+        <button onclick="closeModal()" class="text-blue-300 hover:text-white transition text-xl font-bold">×</button>
       </div>
 
       <form id="recordForm" onsubmit="saveRecord(event)" class="p-6 space-y-4 text-xs">
-        <input type="hidden" id="editId">
+        <input type="hidden" id="editId" value="">
 
         <div class="grid grid-cols-2 gap-4">
           <div class="col-span-2 md:col-span-1">
             <label class="block font-bold text-slate-700 mb-1.5">Nama Pemilik / Penggarap <span class="text-rose-500">*</span></label>
-            <input type="text" id="inputNama" required class="w-full border-2 border-slate-200 rounded-lg p-2.5 focus:border-emerald-500 focus:ring-0 outline-none transition font-medium text-slate-800" placeholder="Contoh: Bpk. Suryana">
+            <input type="text" id="inputNama" required="" class="w-full border-2 border-slate-200 rounded-lg p-2.5 focus:border-emerald-500 focus:ring-0 outline-none transition font-medium text-slate-800" placeholder="Contoh: Bpk. Suryana">
           </div>
           <div class="col-span-2 md:col-span-1">
             <label class="block font-bold text-slate-700 mb-1.5">NIK (16 Digit)</label>
@@ -374,19 +432,19 @@
         <div class="grid grid-cols-2 gap-4">
           <div class="col-span-2 md:col-span-1">
             <label class="block font-bold text-slate-700 mb-1.5">Kampung / Blok <span class="text-rose-500">*</span></label>
-            <input type="text" id="inputBlok" required class="w-full border-2 border-slate-200 rounded-lg p-2.5 focus:border-emerald-500 focus:ring-0 outline-none transition font-medium text-slate-800" placeholder="Contoh: Gunungsari 1">
+            <input type="text" id="inputBlok" required="" class="w-full border-2 border-slate-200 rounded-lg p-2.5 focus:border-emerald-500 focus:ring-0 outline-none transition font-medium text-slate-800" placeholder="Contoh: Gunungsari 1">
           </div>
           <div class="col-span-2 md:col-span-1">
             <label class="block font-bold text-slate-700 mb-1.5">Luas (m²) <span class="text-rose-500">*</span></label>
-            <input type="number" id="inputLuas" required min="1" step="any" class="w-full border-2 border-slate-200 rounded-lg p-2.5 focus:border-emerald-500 focus:ring-0 outline-none transition font-bold text-emerald-700" placeholder="Contoh: 1250">
+            <input type="number" id="inputLuas" required="" min="1" step="any" class="w-full border-2 border-slate-200 rounded-lg p-2.5 focus:border-emerald-500 focus:ring-0 outline-none transition font-bold text-emerald-700" placeholder="Contoh: 1250">
           </div>
         </div>
 
         <div class="grid grid-cols-2 gap-4">
           <!-- Opsi Baru: Status Kepemilikan -->
           <div class="col-span-2 md:col-span-1">
-            <label class="block font-bold text-slate-700 mb-1.5">Status Kepemilikan <span class="text-rose-500">*</span></label>
-            <select id="inputStatus" required class="w-full border-2 border-slate-200 rounded-lg p-2.5 focus:border-emerald-500 focus:ring-0 outline-none transition bg-white font-bold text-slate-700">
+            <label class="block font-bold text-slate-700 mb-1.5 text-blue-800">Status Kepemilikan <span class="text-rose-500">*</span></label>
+            <select id="inputStatus" required="" class="w-full border-2 border-blue-200 rounded-lg p-2.5 focus:border-emerald-500 focus:ring-0 outline-none transition bg-indigo-50 font-bold text-slate-700">
               <option value="Tanah Milik (Pribadi)">Tanah Milik (Pribadi)</option>
               <option value="Tanah Desa (Kas Desa)">Tanah Desa (Kas Desa)</option>
               <option value="Tanah Bengkok">Tanah Bengkok</option>
@@ -395,8 +453,8 @@
             </select>
           </div>
           <div class="col-span-2 md:col-span-1">
-            <label class="block font-bold text-slate-700 mb-1.5">Pengkelasan Tanah <span class="text-rose-500">*</span></label>
-            <select id="inputKelas" required class="w-full border-2 border-slate-200 rounded-lg p-2.5 focus:border-emerald-500 focus:ring-0 outline-none transition bg-white font-bold text-slate-700">
+            <label class="block font-bold text-slate-700 mb-1.5">Kelas Tanah <span class="text-rose-500">*</span></label>
+            <select id="inputKelas" required="" class="w-full border-2 border-slate-200 rounded-lg p-2.5 focus:border-emerald-500 focus:ring-0 outline-none transition bg-white font-bold text-slate-700">
               <option value="Produktif">Tanah Produktif (Sawah / Kebun Aktif)</option>
               <option value="Tidak Produktif">Tanah Tidak Produktif (Lahan Tidur / Semak)</option>
               <option value="Pemukiman">Tanah Pemukiman (Pekarangan / Rumah)</option>
@@ -411,29 +469,66 @@
 
         <div class="flex justify-end gap-2 pt-4 mt-2 border-t border-slate-100">
           <button type="button" onclick="closeModal()" class="px-5 py-2.5 text-slate-500 font-bold hover:bg-slate-100 rounded-lg transition border border-slate-200">Batal</button>
-          <button type="submit" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg shadow-md transition">Simpan Data</button>
+          <button type="submit" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg shadow-md transition">Simpan Data</button>
         </div>
       </form>
     </div>
   </div>
 
+
+  <!-- Print Area Khusus F4 -->
+  <div id="printArea" class="print-only">
+    <div style="text-align: center; margin-bottom: 20px;">
+      <h2 style="font-size: 18px; font-weight: bold; margin: 0; text-transform: uppercase; color: black;">PEMERINTAH KABUPATEN TASIKMALAYA</h2>
+      <h2 style="font-size: 18px; font-weight: bold; margin: 0; text-transform: uppercase; color: black;">KECAMATAN CIKATOMAS</h2>
+      <h2 style="font-size: 24px; font-weight: bold; margin: 0; text-transform: uppercase; color: black;">DESA GUNUNGSARI</h2>
+      <p style="font-size: 12px; margin: 5px 0; color: black;">Alamat: Kantor Kepala Desa Gunungsari, Kec. Cikatomas, Kab. Tasikmalaya</p>
+      <hr style="border: 0; border-top: 3px solid black; margin: 10px 0;">
+      <h3 style="font-size: 16px; font-weight: bold; margin: 15px 0 5px 0; color: black;">DATA KEPEMILIKAN TANAH</h3>
+      <h4 style="font-size: 14px; font-weight: bold; margin: 0; color: black;" id="printBlokTitle">ALAMAT LOKASI: -</h4>
+    </div>
+    <table style="width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 30px; color: black;">
+      <thead>
+        <tr>
+          <th style="border: 1px solid black; padding: 6px; text-align: center;">No</th>
+          <th style="border: 1px solid black; padding: 6px; text-align: left;">Nama Pemilik / Penggarap</th>
+          <th style="border: 1px solid black; padding: 6px; text-align: left;">NIK</th>
+          <th style="border: 1px solid black; padding: 6px; text-align: left;">Kampung / Blok</th>
+          <th style="border: 1px solid black; padding: 6px; text-align: left;">Alamat Tanah</th>
+          <th style="border: 1px solid black; padding: 6px; text-align: left;">Status Kepemilikan</th>
+          <th style="border: 1px solid black; padding: 6px; text-align: left;">Kelas Tanah</th>
+          <th style="border: 1px solid black; padding: 6px; text-align: right;">Luas (m²)</th>
+        </tr>
+      </thead>
+      <tbody id="printTableBody">
+      </tbody>
+      <tfoot>
+        <tr>
+          <th colspan="7" style="border: 1px solid black; padding: 8px; text-align: right; font-weight: bold;">TOTAL LUAS :</th>
+          <th style="border: 1px solid black; padding: 8px; text-align: right; font-weight: bold;" id="printTotalLuas">0 m²</th>
+        </tr>
+      </tfoot>
+    </table>
+    <div style="display: flex; justify-content: flex-end; padding-right: 50px; color: black;">
+      <div style="text-align: center;">
+        <p style="margin: 0 0 5px 0;">Gunungsari, <span id="printDate"></span></p>
+        <p style="margin: 0 0 60px 0;">Kasi Pemerintahan</p>
+        <p style="margin: 0; font-weight: bold; text-decoration: underline;">NURSALIM</p>
+      </div>
+    </div>
+  </div>
+
   <script>
-    // ==========================================
-    // 1. STATE & KONFIGURASI DATABASE
-    // ==========================================
-    const STORAGE_KEY = 'siperta_gunungsari_final_v2';
-    const LOGO_KEY = 'siperta_logo_saved';
-    
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzSi-c54-uUsfDKIiPfTi3odL5FjkEGE2bxMK0lzdrseJLPz-eCS5CMLGm5mDzIULoP/exec';
+    const STORAGE_KEY = 'siperta_gunungsari_final_v5';
     let tanahList = [];
     let currentPage = 1;
     let rowsPerPage = 10;
     let myDonutChart = null;
     let myBarChart = null;
+    let myStatusChart = null; 
     let globalRekapBlok = {}; 
 
-    // ==========================================
-    // 2. JAM DIGITAL, MUSIK, DAN LOGO
-    // ==========================================
     function updateClock() {
       const now = new Date();
       const optionsDate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
@@ -444,98 +539,91 @@
     setInterval(updateClock, 1000);
     updateClock();
 
-    function changeLogo(event) {
-      const file = event.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-          const base64Image = e.target.result;
-          document.getElementById('appLogo').src = base64Image;
-          localStorage.setItem(LOGO_KEY, base64Image);
-        };
-        reader.readAsDataURL(file);
-      }
-    }
+    
+    
 
-    function loadAndPlayMusic(event) {
-      const file = event.target.files[0];
-      if (file) {
-        const audioUrl = URL.createObjectURL(file);
-        const music = document.getElementById('bgMusic');
-        const btn = document.getElementById('btnMusic');
-        
-        music.src = audioUrl;
-        music.volume = 0.5;
-        music.play();
-        
-        btn.innerHTML = '<span>⏸ Jeda Instrumen</span>';
-        btn.classList.replace('bg-[#0f443b]', 'bg-amber-600');
-        btn.classList.replace('border-[#2b7a6c]', 'border-amber-400');
-      }
-    }
-
-    function toggleMusic() {
-      const music = document.getElementById('bgMusic');
-      const btn = document.getElementById('btnMusic');
+    
+    async function forceSync() {
+      const btn = document.getElementById('btnSync');
+      const originalText = btn.innerHTML;
+      btn.innerHTML = '<span>⏳ Tunggu...</span>';
       
-      if(!music.src || music.src.endsWith('siperta.html')) {
-        document.getElementById('audioInput').click();
-        return;
+      try {
+        const response = await fetch(SCRIPT_URL + "?t=" + new Date().getTime());
+        const data = await response.json();
+        
+        if(data && Array.isArray(data)) {
+           tanahList = data;
+           localStorage.setItem(STORAGE_KEY, JSON.stringify(tanahList)); 
+           renderAll();
+        }
+      } catch(e) {
+        console.error('Error Sync:', e);
       }
-      
-      if (music.paused) {
-        music.play();
-        btn.innerHTML = '<span>⏸ Jeda Instrumen</span>';
-        btn.classList.replace('bg-[#0f443b]', 'bg-amber-600');
-        btn.classList.replace('border-[#2b7a6c]', 'border-amber-400');
-      } else {
-        music.pause();
-        btn.innerHTML = '<span>🎵 Putar Instrumen</span>';
-        btn.classList.replace('bg-amber-600', 'bg-[#0f443b]');
-        btn.classList.replace('border-amber-400', 'border-[#2b7a6c]');
-      }
+      btn.innerHTML = originalText;
     }
 
-    // ==========================================
-    // 3. INISIALISASI & TAB NAVIGASI
-    // ==========================================
-    window.addEventListener('DOMContentLoaded', () => {
+    
+    window.addEventListener('DOMContentLoaded', async () => {
+      initCharts(); switchTab('tab-ringkasan');
+      
+      // Load dari LocalStorage terlebih dahulu agar aplikasi terasa cepat & tidak hilang saat refresh
       const savedData = localStorage.getItem(STORAGE_KEY);
       if (savedData) {
-        try { tanahList = JSON.parse(savedData); } catch(e) { tanahList = []; }
+        try { 
+          tanahList = JSON.parse(savedData); 
+          renderAll(); // Langsung tampilkan data lokal
+        } catch(err) { 
+          tanahList = []; 
+        }
       }
-
-      const savedLogo = localStorage.getItem(LOGO_KEY);
-      if (savedLogo) {
-        document.getElementById('appLogo').src = savedLogo;
+      
+      // Kemudian lakukan sinkronisasi ke cloud di belakang layar secara diam-diam (silent sync)
+      try {
+        // Karena fetch ke Apps Script kadang diblokir browser jika langsung (CORS), kita gunakan pendekatan aman
+        // Namun, jika forceSync() berfungsi, fetch ini seharusnya berfungsi.
+        const response = await fetch(SCRIPT_URL + "?t=" + new Date().getTime());
+        const data = await response.json();
+        
+        if(data && Array.isArray(data) && data.length > 0) {
+           // Update data hanya jika server mengembalikan data valid (bukan array kosong karena error)
+           tanahList = data;
+           localStorage.setItem(STORAGE_KEY, JSON.stringify(tanahList)); 
+           renderAll(); // Render ulang dengan data segar dari server
+        }
+      } catch(e) {
+        console.warn('Silent sync gagal (mungkin offline/CORS), tetap menggunakan data lokal.', e);
       }
-
-      initCharts();
-      renderAll();
     });
 
     function switchTab(tabId) {
       const tabs = ['tab-ringkasan', 'tab-rekap', 'tab-data', 'tab-import'];
       const navs = ['nav-ringkasan', 'nav-rekap', 'nav-data', 'nav-import'];
-      
       tabs.forEach(id => document.getElementById(id).classList.add('hidden'));
       navs.forEach(id => {
         const el = document.getElementById(id);
-        el.classList.remove('text-white', 'border-b-[3px]', 'border-emerald-400');
+        el.classList.remove('text-white', 'border-b-[3px]', 'border-blue-500', 'border-emerald-400');
         el.classList.add('hover:text-white');
       });
-
       document.getElementById(tabId).classList.remove('hidden');
       const activeNavId = tabId.replace('tab-', 'nav-');
       const activeNav = document.getElementById(activeNavId);
       activeNav.classList.remove('hover:text-white');
-      activeNav.classList.add('text-white', 'border-b-[3px]', 'border-emerald-400');
-      
+      activeNav.classList.add('text-white', 'border-b-[3px]', 'border-blue-500');
       if(tabId === 'tab-ringkasan') updateCharts();
     }
 
-    function autoSave() {
+    async function autoSave() {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(tanahList));
+      try {
+        await fetch(SCRIPT_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({ action: 'sync_all', data: tanahList })
+        });
+      } catch(e) {
+        console.error('Gagal menyimpan ke Database Cloud', e);
+      }
     }
 
     function renderAll() {
@@ -543,14 +631,9 @@
       populateBlokFilter();
       renderStatsAndRekap();
       renderTable();
-      if(!document.getElementById('tab-ringkasan').classList.contains('hidden')) {
-        updateCharts();
-      }
+      if(!document.getElementById('tab-ringkasan').classList.contains('hidden')) updateCharts();
     }
 
-    // ==========================================
-    // 4. STATISTIK & REKAP
-    // ==========================================
     function renderStatsAndRekap() {
       let totalBidang = tanahList.length;
       let luasTotal = 0, luasProd = 0, bidangProd = 0, luasNonProd = 0, bidangNonProd = 0, luasPem = 0, bidangPem = 0;
@@ -560,16 +643,13 @@
         const luas = Number(item.luas) || 0;
         const blok = (item.blok || 'Belum Ditentukan').trim();
         luasTotal += luas;
-
         if (!rekapBlok[blok]) rekapBlok[blok] = { count: 0, prod: 0, nonProd: 0, pem: 0, total: 0 };
         rekapBlok[blok].count += 1;
         rekapBlok[blok].total += luas;
-
         if (item.kelas === 'Produktif') { luasProd += luas; bidangProd += 1; rekapBlok[blok].prod += luas; }
         else if (item.kelas === 'Tidak Produktif') { luasNonProd += luas; bidangNonProd += 1; rekapBlok[blok].nonProd += luas; }
         else { luasPem += luas; bidangPem += 1; rekapBlok[blok].pem += luas; }
       });
-
       globalRekapBlok = rekapBlok;
 
       const pctProd = totalBidang ? ((bidangProd/totalBidang)*100).toFixed(1) : 0;
@@ -592,37 +672,39 @@
       const tbody = document.getElementById('rekapBlokBody');
       tbody.innerHTML = '';
       const blokKeys = Object.keys(rekapBlok).sort();
-
       if (blokKeys.length === 0) {
         tbody.innerHTML = `<tr><td colspan="6" class="text-center py-10 font-bold text-slate-400">Belum ada data terekap.</td></tr>`;
         return;
       }
-
       blokKeys.forEach(blok => {
         const b = rekapBlok[blok];
         const tr = document.createElement('tr');
         tr.className = "hover:bg-emerald-50/50 transition";
         tr.innerHTML = `
-          <td class="px-5 py-3.5 font-bold text-slate-800">${blok}</td>
+          <td class="px-5 py-3.5 font-bold text-slate-800">${esc(blok)}</td>
           <td class="px-5 py-3.5 text-center font-medium">${formatAngka(b.count)} Bidang</td>
           <td class="px-5 py-3.5 text-right text-emerald-700 font-bold">${formatAngka(b.prod)}</td>
           <td class="px-5 py-3.5 text-right text-amber-600 font-bold">${formatAngka(b.nonProd)}</td>
-          <td class="px-5 py-3.5 text-right text-blue-600 font-bold">${formatAngka(b.pem)}</td>
+          <td class="px-5 py-3.5 text-right text-indigo-600 font-bold">${formatAngka(b.pem)}</td>
           <td class="px-5 py-3.5 text-right font-extrabold text-slate-900">${formatAngka(b.total)} m²</td>
         `;
         tbody.appendChild(tr);
       });
     }
 
-    // ==========================================
-    // 5. CHART.JS VISUALIZATION
-    // ==========================================
     function initCharts() {
       const ctxDonut = document.getElementById('chartDonut').getContext('2d');
       myDonutChart = new Chart(ctxDonut, {
         type: 'doughnut',
-        data: { labels: ['Produktif', 'Tidak Produktif', 'Pemukiman'], datasets: [{ data: [0,0,0], backgroundColor: ['#22c55e', '#f59e0b', '#3b82f6'], borderWidth: 2 }] },
+        data: { labels: ['Produktif', 'Tidak Produktif', 'Pemukiman'], datasets: [{ data: [0,0,0], backgroundColor: ['#10b981', '#f59e0b', '#6366f1'], borderWidth: 2 }] },
         options: { responsive: true, maintainAspectRatio: false, cutout: '70%', plugins: { legend: { display: false } } }
+      });
+
+      const ctxStatus = document.getElementById('chartStatus').getContext('2d');
+      myStatusChart = new Chart(ctxStatus, {
+        type: 'pie',
+        data: { labels: ['Tanah Milik', 'Tanah Desa', 'Bengkok', 'Wakaf', 'Negara'], datasets: [{ data: [0,0,0,0,0], backgroundColor: ['#3b82f6', '#10b981', '#f59e0b', '#8b5cf6', '#64748b'], borderWidth: 2 }] },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, font: {size: 11, weight:'bold'} } } } }
       });
 
       const ctxBar = document.getElementById('chartBar').getContext('2d');
@@ -635,10 +717,18 @@
 
     function updateCharts() {
       let lProd = 0, lNon = 0, lPem = 0;
+      let sMilik = 0, sDesa = 0, sBengkok = 0, sWakaf = 0, sNegara = 0;
       tanahList.forEach(t => {
         if(t.kelas === 'Produktif') lProd += t.luas;
         else if(t.kelas === 'Tidak Produktif') lNon += t.luas;
         else lPem += t.luas;
+
+        const status = t.status || 'Tanah Milik (Pribadi)';
+        if(status.includes('Milik')) sMilik++;
+        else if(status.includes('Desa')) sDesa++;
+        else if(status.includes('Bengkok')) sBengkok++;
+        else if(status.includes('Wakaf')) sWakaf++;
+        else sNegara++;
       });
 
       if(lProd === 0 && lNon === 0 && lPem === 0) {
@@ -649,6 +739,16 @@
         document.getElementById('donutEmpty').classList.add('hidden');
         myDonutChart.data.datasets[0].data = [lProd, lNon, lPem];
         myDonutChart.update();
+      }
+
+      if(sMilik === 0 && sDesa === 0 && sBengkok === 0 && sWakaf === 0 && sNegara === 0) {
+        document.getElementById('chartStatus').style.display = 'none';
+        document.getElementById('statusEmpty').classList.remove('hidden');
+      } else {
+        document.getElementById('chartStatus').style.display = 'block';
+        document.getElementById('statusEmpty').classList.add('hidden');
+        myStatusChart.data.datasets[0].data = [sMilik, sDesa, sBengkok, sWakaf, sNegara];
+        myStatusChart.update();
       }
 
       const bloks = Object.keys(globalRekapBlok).map(key => ({ name: key, data: globalRekapBlok[key] })).sort((a,b) => b.data.total - a.data.total).slice(0, 5);
@@ -662,15 +762,12 @@
         myBarChart.data.datasets = [
           { label: 'Produktif', data: bloks.map(b => b.data.prod), backgroundColor: '#22c55e' },
           { label: 'Tidak Produktif', data: bloks.map(b => b.data.nonProd), backgroundColor: '#ea580c' },
-          { label: 'Pemukiman', data: bloks.map(b => b.data.pem), backgroundColor: '#3b82f6' }
+          { label: 'Pemukiman', data: bloks.map(b => b.data.pem), backgroundColor: '#6366f1' }
         ];
         myBarChart.update();
       }
     }
 
-    // ==========================================
-    // 6. TABEL & HALAMAN
-    // ==========================================
     function changeLimit() {
       const selectVal = document.getElementById('limitSelect').value;
       rowsPerPage = parseInt(selectVal);
@@ -690,12 +787,11 @@
         const matchSearch = (item.nama || '').toLowerCase().includes(search) || (item.nik || '').toLowerCase().includes(search) || (item.alamat || '').toLowerCase().includes(search);
         const matchBlok = !filterBlok || item.blok === filterBlok;
         const matchKelas = !filterKelas || item.kelas === filterKelas;
-        const matchStatus = !filterStatus || item.status === filterStatus;
+        const matchStatus = !filterStatus || (item.status || 'Tanah Milik (Pribadi)') === filterStatus;
         return matchSearch && matchBlok && matchKelas && matchStatus;
       });
 
       const totalPages = Math.ceil(filtered.length / rowsPerPage) || 1;
-
       if (page >= 1 && page <= totalPages) {
         currentPage = page;
         renderTable();
@@ -704,16 +800,13 @@
       }
     }
 
-    function goToPage(page) {
-      currentPage = page;
-      renderTable();
-    }
+    function goToPage(page) { currentPage = page; renderTable(); }
 
     function renderTable() {
       const search = document.getElementById('searchInput').value.toLowerCase().trim();
       const filterBlok = document.getElementById('filterBlok').value;
       const filterKelas = document.getElementById('filterKelas').value;
-      const filterStatus = document.getElementById('filterStatus').value; // Baru
+      const filterStatus = document.getElementById('filterStatus').value;
 
       const filtered = tanahList.filter(item => {
         const matchSearch = (item.nama || '').toLowerCase().includes(search) || (item.nik || '').toLowerCase().includes(search) || (item.alamat || '').toLowerCase().includes(search);
@@ -730,7 +823,6 @@
 
       const startIdx = (currentPage - 1) * rowsPerPage;
       const currentItems = filtered.slice(startIdx, startIdx + rowsPerPage);
-
       const tbody = document.getElementById('dataTableBody');
       tbody.innerHTML = '';
 
@@ -744,21 +836,19 @@
           let badgeColor = "bg-emerald-100 text-emerald-800 border-emerald-200";
           if (item.kelas === 'Tidak Produktif') badgeColor = "bg-amber-100 text-amber-800 border-amber-200";
           if (item.kelas === 'Pemukiman') badgeColor = "bg-blue-100 text-blue-800 border-blue-200";
-
-          // Pastikan data lama yang tidak punya status ter-default ke Tanah Milik
           const statusTampil = item.status || 'Tanah Milik (Pribadi)';
 
           tr.innerHTML = `
             <td class="px-4 py-3 text-center text-slate-500 font-bold">${startIdx + index + 1}</td>
-            <td class="px-4 py-3 font-extrabold text-slate-800">${item.nama}</td>
-            <td class="px-4 py-3 font-mono text-slate-500 font-medium">${item.nik || '<span class="text-slate-300 italic">-</span>'}</td>
-            <td class="px-4 py-3 font-bold text-slate-700">${item.blok || '-'}</td>
-            <td class="px-4 py-3 text-slate-500 max-w-[150px] truncate font-medium" title="${item.alamat || ''}">${item.alamat || '-'}</td>
-            <td class="px-4 py-3 font-bold text-slate-700 text-[11px]">${statusTampil}</td>
-            <td class="px-4 py-3"><span class="inline-block px-2.5 py-1 rounded text-[10px] font-extrabold border ${badgeColor}">${item.kelas}</span></td>
+            <td class="px-4 py-3 font-extrabold text-slate-800">${esc(item.nama)}</td>
+            <td class="px-4 py-3 font-mono text-slate-500 font-medium">${esc(item.nik) || '<span class="text-slate-300 italic">-</span>'}</td>
+            <td class="px-4 py-3 font-bold text-slate-700">${esc(item.blok) || '-'}</td>
+            <td class="px-4 py-3 text-slate-500 max-w-[150px] truncate font-medium" title="${esc(item.alamat)}">${esc(item.alamat) || '-'}</td>
+            <td class="px-4 py-3 font-bold text-blue-800 text-[11px]">${esc(statusTampil)}</td>
+            <td class="px-4 py-3"><span class="inline-block px-2.5 py-1 rounded text-[10px] font-extrabold border ${badgeColor}">${esc(item.kelas)}</span></td>
             <td class="px-4 py-3 text-right font-black text-emerald-800 text-sm">${formatAngka(item.luas)}</td>
             <td class="px-4 py-3 text-center space-x-2">
-              <button onclick="editRecord(${item.id})" class="text-blue-600 hover:text-blue-800 font-extrabold transition">Edit</button>
+              <button onclick="editRecord(${item.id})" class="text-indigo-600 hover:text-blue-800 font-extrabold transition">Edit</button>
               <button onclick="deleteRecord(${item.id})" class="text-rose-500 hover:text-rose-700 font-extrabold transition">Hapus</button>
             </td>
           `;
@@ -785,20 +875,9 @@
 
       let startP = Math.max(1, currentPage - 2);
       let endP = Math.min(totalPages, currentPage + 2);
-      
-      if(startP > 1) {
-        wrapper.appendChild(createPageBtn(1));
-        if(startP > 2) wrapper.appendChild(createDots());
-      }
-      
-      for(let p = startP; p <= endP; p++) {
-        wrapper.appendChild(createPageBtn(p));
-      }
-
-      if(endP < totalPages) {
-        if(endP < totalPages - 1) wrapper.appendChild(createDots());
-        wrapper.appendChild(createPageBtn(totalPages));
-      }
+      if(startP > 1) { wrapper.appendChild(createPageBtn(1)); if(startP > 2) wrapper.appendChild(createDots()); }
+      for(let p = startP; p <= endP; p++) { wrapper.appendChild(createPageBtn(p)); }
+      if(endP < totalPages) { if(endP < totalPages - 1) wrapper.appendChild(createDots()); wrapper.appendChild(createPageBtn(totalPages)); }
 
       const btnNext = document.createElement('button');
       btnNext.innerHTML = 'Lanjut ›';
@@ -811,39 +890,59 @@
     function createPageBtn(p) {
       const btn = document.createElement('button');
       btn.innerText = p;
-      if(p === currentPage) {
-        btn.className = "px-4 py-2 border rounded-lg font-extrabold bg-emerald-600 text-white border-emerald-600 shadow-md transform scale-105 transition";
-      } else {
-        btn.className = "px-4 py-2 border rounded-lg font-bold text-slate-600 border-slate-300 hover:bg-slate-100 transition";
-        btn.onclick = () => goToPage(p);
-      }
+      if(p === currentPage) { btn.className = "px-4 py-2 border rounded-lg font-extrabold bg-blue-600 text-white border-emerald-600 shadow-md transform scale-105 transition"; } 
+      else { btn.className = "px-4 py-2 border rounded-lg font-bold text-slate-600 border-slate-300 hover:bg-slate-100 transition"; btn.onclick = () => goToPage(p); }
       return btn;
     }
-    
     function createDots() {
-      const span = document.createElement('span');
-      span.innerText = '...';
-      span.className = "px-3 py-2 text-slate-400 font-black tracking-widest";
-      return span;
+      const span = document.createElement('span'); span.innerText = '...'; span.className = "px-3 py-2 text-slate-400 font-black tracking-widest"; return span;
     }
 
     function populateBlokFilter() {
       const select = document.getElementById('filterBlok');
+      const printSelect = document.getElementById('printBlokFilter');
       const current = select.value;
+      const printCurrent = printSelect ? printSelect.value : '';
+      
       const bloks = Array.from(new Set(tanahList.map(t => t.blok).filter(Boolean))).sort();
-      select.innerHTML = '<option value="">Semua Blok / Kampung</option>';
+      
+      let optHtml = '<option value="">Semua Blok / Kampung</option>';
+      let printOptHtml = '<option value="">-- Pilih Kampung / Blok --</option><option value="__ALL__">★ Semua Data</option>';
+      
       bloks.forEach(b => {
-        const opt = document.createElement('option');
-        opt.value = b;
-        opt.innerText = b;
-        select.appendChild(opt);
+        optHtml += `<option value="${esc(b)}">${esc(b)}</option>`;
+        printOptHtml += `<option value="${esc(b)}">${esc(b)}</option>`;
       });
+      
+      select.innerHTML = optHtml;
+      const exSel = document.getElementById('exportBlokFilter');
+      if (exSel) { const exCur = exSel.value; exSel.innerHTML = optHtml; exSel.value = exCur; }
       select.value = current;
+      
+      if(printSelect) {
+         printSelect.innerHTML = printOptHtml;
+         printSelect.value = printCurrent;
+      }
     }
 
-    // ==========================================
-    // 7. FUNGSI CRUD MODAL
-    // ==========================================
+    function printLaporanBlok(forced) {
+      const val = forced || document.getElementById('printBlokFilter').value;
+      if (!val) return alert('Pilih Kampung / Blok yang ingin dicetak terlebih dahulu!');
+      const all = val === '__ALL__';
+      const filtered = sortedList(tanahList.filter(t => all || t.blok === val));
+      if (filtered.length === 0) return alert('Data kosong untuk pilihan tersebut.');
+      document.getElementById('printBlokTitle').innerText = all ? 'SELURUH KAMPUNG / BLOK' : `KAMPUNG / BLOK: ${val.toUpperCase()}`;
+      const td = 'border: 1px solid black; padding: 6px;';
+      let total = 0;
+      document.getElementById('printTableBody').innerHTML = filtered.map((it, i) => {
+        total += Number(it.luas) || 0;
+        return `<tr><td style="${td} text-align: center;">${i + 1}</td><td style="${td}">${esc(it.nama)}</td><td style="${td}">${esc(it.nik) || '-'}</td><td style="${td}">${esc(it.blok) || '-'}</td><td style="${td}">${esc(it.alamat) || '-'}</td><td style="${td}">${esc(it.status) || '-'}</td><td style="${td}">${esc(it.kelas) || '-'}</td><td style="${td} text-align: right;">${formatAngka(it.luas)}</td></tr>`;
+      }).join('');
+      document.getElementById('printTotalLuas').innerText = formatAngka(total) + ' m²';
+      document.getElementById('printDate').innerText = tglIndo();
+      window.print();
+    }
+
     function openModal(isEdit = false) {
       document.getElementById('recordModal').classList.remove('hidden');
       setTimeout(() => document.getElementById('modalContent').classList.remove('scale-95'), 10);
@@ -859,7 +958,7 @@
       }, 150);
     }
 
-    function saveRecord(e) {
+    async function saveRecord(e) {
       e.preventDefault();
       const id = document.getElementById('editId').value;
       const nama = document.getElementById('inputNama').value.trim();
@@ -868,17 +967,42 @@
       const luas = parseFloat(document.getElementById('inputLuas').value) || 0;
       const alamat = document.getElementById('inputAlamat').value.trim();
       const kelas = document.getElementById('inputKelas').value;
-      const status = document.getElementById('inputStatus').value; // Baru
+      const status = document.getElementById('inputStatus').value;
+      
+      const submitBtn = document.querySelector('button[type="submit"]');
+      const originalText = submitBtn.innerHTML;
+      submitBtn.innerHTML = 'Menyimpan...';
+      submitBtn.disabled = true;
+
+      let action = 'add';
+      let payload = { nama, nik, blok, luas, alamat, kelas, status };
 
       if (id) {
+        action = 'edit';
+        payload.id = parseInt(id); // atau biarkan string jika ID besar
         const target = tanahList.find(item => item.id == id);
-        if (target) { Object.assign(target, {nama, nik, blok, luas, alamat, kelas, status}); }
+        if (target) { Object.assign(target, payload); }
       } else {
-        const newId = new Date().getTime(); 
-        tanahList.unshift({ id: newId, nama, nik, blok, luas, alamat, kelas, status });
+        payload.id = new Date().getTime(); 
+        tanahList.unshift(payload);
       }
+      
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(tanahList));
+      closeModal(); 
+      renderAll();
 
-      autoSave(); closeModal(); renderAll();
+      try {
+        await fetch(SCRIPT_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({ action: action, data: payload })
+        });
+      } catch(err) {
+        console.error('Gagal sinkron ke Sheet:', err);
+      }
+      
+      submitBtn.innerHTML = originalText;
+      submitBtn.disabled = false;
     }
 
     function editRecord(id) {
@@ -891,84 +1015,202 @@
       document.getElementById('inputLuas').value = target.luas;
       document.getElementById('inputAlamat').value = target.alamat || '';
       document.getElementById('inputKelas').value = target.kelas;
-      document.getElementById('inputStatus').value = target.status || 'Tanah Milik (Pribadi)'; // Baru
+      document.getElementById('inputStatus').value = target.status || 'Tanah Milik (Pribadi)';
       openModal(true);
     }
 
-    function deleteRecord(id) {
+    async function deleteRecord(id) {
       const target = tanahList.find(item => item.id == id);
       if (!target) return;
       if (confirm(`YAKIN MENGHAPUS PERMANEN data bidang milik:\n"${target.nama}" (Luas: ${target.luas} m²)?`)) {
         tanahList = tanahList.filter(item => item.id != id);
-        autoSave(); renderAll();
+        
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(tanahList));
+        renderAll();
+        
+        try {
+          await fetch(SCRIPT_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify({ action: 'delete', id: id })
+          });
+        } catch(err) {
+          console.error('Gagal menghapus dari Sheet:', err);
+        }
       }
     }
 
     function resetData() {
       if(confirm("⚠ PERINGATAN KERAS! ⚠\nAnda yakin ingin MENGHAPUS SELURUH DATA SISTEM?\nPastikan Anda sudah klik 'Backup Database' sebelum melakukan ini.")) {
-        tanahList = [];
-        autoSave(); renderAll();
+        tanahList = []; autoSave(); renderAll();
       }
     }
 
-    // ==========================================
-    // 8. IMPORT, EXPORT, BACKUP RESTORE
-    // ==========================================
     function importExcel(e) {
       const file = e.target.files[0];
       if (!file) return;
       const reader = new FileReader();
       reader.onload = function(evt) {
         try {
-          const data = new Uint8Array(evt.target.result);
-          const workbook = XLSX.read(data, { type: 'array' });
-          const rows = XLSX.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames[0]], { header: 1 });
+          const wb = XLSX.read(new Uint8Array(evt.target.result), { type: 'array' });
+          const rows = XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]], { header: 1, defval: '' });
+          const norm = v => String(v).toLowerCase().replace(/[^a-z]/g, '');
+          const hIdx = rows.findIndex(r => r.some(c => norm(c).startsWith('nama')) && r.some(c => norm(c).startsWith('luas')));
+          const col = { nama: 1, luas: 2 };
+          if (hIdx >= 0) {
+            delete col.luas;
+            rows[hIdx].forEach((c, i) => {
+              const k = norm(c);
+              if (k.startsWith('nama')) col.nama = i; else if (k === 'nik') col.nik = i;
+              else if (k.startsWith('kampung')) col.blok = i; else if (k.startsWith('alamat')) col.alamat = i;
+              else if (k.startsWith('status')) col.status = i; else if (k.startsWith('kelas')) col.kelas = i;
+              else if (k.startsWith('luas')) col.luas = i;
+            });
+          }
+          const kelasOk = ['Produktif', 'Tidak Produktif', 'Pemukiman'];
+          const get = (r, k) => (col[k] === undefined ? '' : String(r[col[k]] ?? '').trim());
           let importedCount = 0;
-          
-          for (let i = 1; i < rows.length; i++) {
-            const row = rows[i];
-            if (!row || row.length < 2) continue;
-
-            const nama = (row[1] || '').toString().replace(/%%/g, '').trim();
-            const rawLuas = (row[2] || '').toString();
-            const cleanLuas = parseFloat(rawLuas.replace(/[^0-9.]/g, '')) || 0;
-
-            if (nama && cleanLuas > 0) {
-              tanahList.push({
-                id: new Date().getTime() + i,
-                nama: nama, luas: cleanLuas,
-                blok: "Gunungsari (Import)", alamat: "-",
-                kelas: cleanLuas > 1000 ? "Produktif" : (cleanLuas < 300 ? "Pemukiman" : "Tidak Produktif"),
-                status: "Tanah Milik (Pribadi)", // Status Default untuk Data Import
-                nik: ""
-              });
-              importedCount++;
-            }
+          for (let i = (hIdx >= 0 ? hIdx + 1 : 1); i < rows.length; i++) {
+            const r = rows[i];
+            if (!r) continue;
+            const nama = get(r, 'nama').replace(/%%/g, '').trim();
+            const luas = parseFloat(get(r, 'luas').replace(/[^0-9.]/g, '')) || 0;
+            if (!nama || luas <= 0) continue;
+            const kelasIn = get(r, 'kelas');
+            tanahList.push({
+              id: new Date().getTime() + i, nama: nama, luas: luas,
+              nik: get(r, 'nik').replace(/\D/g, ''),
+              blok: get(r, 'blok') || 'Gunungsari (Import)',
+              alamat: get(r, 'alamat') || '-',
+              status: get(r, 'status') || 'Tanah Milik (Pribadi)',
+              kelas: kelasOk.includes(kelasIn) ? kelasIn : (luas > 1000 ? 'Produktif' : (luas < 300 ? 'Pemukiman' : 'Tidak Produktif'))
+            });
+            importedCount++;
           }
           autoSave(); renderAll(); switchTab('tab-data');
           alert(`Berhasil! ${formatAngka(importedCount)} data berhasil diimpor ke sistem.`);
-        } catch (err) { alert("Gagal membaca file Excel. Pastikan format tabel sesuai."); }
+        } catch (err) { alert('Gagal membaca file Excel. Pastikan format tabel sesuai.'); }
       };
       reader.readAsArrayBuffer(file);
       e.target.value = '';
     }
 
-    function exportExcel() {
-      if(tanahList.length === 0) return alert("Belum ada data untuk diekspor!");
-      const exportData = tanahList.map((t, idx) => ({
-        "No": idx + 1, 
-        "Nama Pemilik/Penggarap": t.nama, 
-        "NIK": t.nik,
-        "Kampung/Blok": t.blok, 
-        "Alamat Tanah": t.alamat,
-        "Status Kepemilikan": t.status || "Tanah Milik (Pribadi)", // Baru
-        "Kelas Tanah": t.kelas, 
-        "Luas (m2)": t.luas
-      }));
-      const ws = XLSX.utils.json_to_sheet(exportData);
-      const wb = XLSX.utils.book_new();
-      XLSX.utils.book_append_sheet(wb, ws, "Data Tanah");
-      XLSX.writeFile(wb, "SIPERTA_Gunungsari.xlsx");
+    async function exportExcel() {
+      if (!tanahList || tanahList.length === 0) return alert('Belum ada data untuk diekspor!');
+      if (typeof ExcelJS === 'undefined') return alert('Pustaka ExcelJS belum termuat. Periksa koneksi internet lalu muat ulang halaman.');
+      const blokSel = document.getElementById('exportBlokFilter').value;
+      const landscape = document.getElementById('exportOrientasi').value === 'landscape';
+      const list = sortedList(tanahList.filter(t => !blokSel || t.blok === blokSel));
+      if (list.length === 0) return alert('Tidak ada data untuk pilihan tersebut.');
+      try {
+        const wb = new ExcelJS.Workbook();
+        wb.creator = 'SIPERTA Desa Gunungsari';
+        const thin = { style: 'thin', color: { argb: 'FF000000' } };
+        const border = { top: thin, left: thin, bottom: thin, right: thin };
+        const grey = (argb) => ({ type: 'pattern', pattern: 'solid', fgColor: { argb } });
+        const F = (o) => Object.assign({ name: 'Arial', size: 10 }, o || {});
+        const numFmt = list.some(t => !Number.isInteger(Number(t.luas) || 0)) ? '#,##0.00' : '#,##0';
+        const subtitle = blokSel ? 'KAMPUNG / BLOK: ' + blokSel.toUpperCase() : 'SELURUH KAMPUNG / BLOK';
+        const HR = 9;
+
+        const makeSheet = (name, title, headers, widths, kinds, rows) => {
+          const ws = wb.addWorksheet(name);
+          const n = headers.length;
+          widths.forEach((w, i) => { ws.getColumn(i + 1).width = w; });
+          const merged = (r, c1, c2, value, font, align) => {
+            if (c2 > c1) ws.mergeCells(r, c1, r, c2);
+            const c = ws.getCell(r, c1);
+            c.value = value; c.font = F(font);
+            c.alignment = Object.assign({ horizontal: 'center', vertical: 'middle' }, align || {});
+          };
+          merged(1, 1, n, 'PEMERINTAH KABUPATEN TASIKMALAYA', { bold: true, size: 12 });
+          merged(2, 1, n, 'KECAMATAN CIKATOMAS', { bold: true, size: 12 });
+          merged(3, 1, n, 'DESA GUNUNGSARI', { bold: true, size: 15 });
+          merged(4, 1, n, 'Alamat: Kantor Kepala Desa Gunungsari, Kec. Cikatomas, Kab. Tasikmalaya', { size: 9 });
+          for (let i = 1; i <= n; i++) ws.getCell(4, i).border = { bottom: { style: 'medium' } };
+          merged(6, 1, n, title, { bold: true, size: 12 });
+          merged(7, 1, n, subtitle, { bold: true });
+
+          const hr = ws.getRow(HR);
+          hr.height = 26;
+          headers.forEach((h, i) => {
+            const c = hr.getCell(i + 1);
+            c.value = h; c.font = F({ bold: true }); c.border = border; c.fill = grey('FFD9D9D9');
+            c.alignment = { horizontal: 'center', vertical: 'middle', wrapText: true };
+          });
+          rows.forEach(r => {
+            const row = ws.addRow(r);
+            kinds.forEach((k, i) => {
+              const c = row.getCell(i + 1);
+              c.font = F(); c.border = border;
+              c.alignment = { vertical: 'middle', wrapText: true, horizontal: k === 'c' ? 'center' : (k === 'n' || k === 'i') ? 'right' : 'left' };
+              if (k === 'n') c.numFmt = numFmt; else if (k === 'i') c.numFmt = '#,##0'; else if (k === 't') c.numFmt = '@';
+            });
+          });
+
+          const first = HR + 1, last = HR + rows.length;
+          const trow = ws.addRow([]).number;
+          const f = kinds.findIndex(k => k === 'n' || k === 'i');
+          merged(trow, 1, f, 'TOTAL', { bold: true }, { horizontal: 'right' });
+          for (let i = 1; i <= n; i++) {
+            const c = ws.getCell(trow, i);
+            c.border = border; c.fill = grey('FFF2F2F2');
+            const k = kinds[i - 1];
+            if (k === 'n' || k === 'i') {
+              const L = ws.getColumn(i).letter;
+              c.value = { formula: `SUM(${L}${first}:${L}${last})`, result: rows.reduce((a, r) => a + (Number(r[i - 1]) || 0), 0) };
+              c.font = F({ bold: true }); c.numFmt = k === 'n' ? numFmt : '#,##0';
+              c.alignment = { horizontal: 'right', vertical: 'middle' };
+            }
+          }
+          const sc = n - 2;
+          merged(trow + 2, sc, n, 'Gunungsari, ' + tglIndo(), {});
+          merged(trow + 3, sc, n, 'Kasi Pemerintahan', {});
+          merged(trow + 7, sc, n, 'NURSALIM', { bold: true, underline: true });
+
+          ws.pageSetup = {
+            paperSize: 14, // Folio / F4
+            orientation: landscape ? 'landscape' : 'portrait',
+            fitToPage: true, fitToWidth: 1, fitToHeight: 0,
+            horizontalCentered: true,
+            printTitlesRow: HR + ':' + HR,
+            margins: { left: 0.5, right: 0.5, top: 0.6, bottom: 0.7, header: 0.3, footer: 0.3 }
+          };
+          ws.headerFooter = { oddFooter: '&L&8SIPERTA Desa Gunungsari&C&8Halaman &P dari &N&R&8Dicetak: &D' };
+          ws.autoFilter = { from: { row: HR, column: 1 }, to: { row: HR, column: n } };
+        };
+
+        makeSheet('Data Tanah', 'DATA KEPEMILIKAN TANAH',
+          ['No', 'Nama Pemilik / Penggarap', 'NIK', 'Kampung / Blok', 'Alamat Tanah', 'Status Kepemilikan', 'Kelas Tanah', 'Luas (m²)'],
+          [5, 26, 19, 17, 22, 19, 14, 11],
+          ['c', 'l', 't', 'l', 'l', 'l', 'l', 'n'],
+          list.map((t, i) => [i + 1, t.nama || '', String(t.nik || ''), t.blok || '', t.alamat || '', t.status || 'Tanah Milik (Pribadi)', t.kelas || '', Number(t.luas) || 0]));
+
+        const rekap = {};
+        list.forEach(t => {
+          const b = (t.blok || 'Belum Ditentukan').trim();
+          const r = rekap[b] || (rekap[b] = { n: 0, p: 0, np: 0, pm: 0 });
+          const l = Number(t.luas) || 0;
+          r.n++;
+          if (t.kelas === 'Produktif') r.p += l; else if (t.kelas === 'Tidak Produktif') r.np += l; else r.pm += l;
+        });
+        makeSheet('Rekap per Blok', 'REKAPITULASI LUAS PER KAMPUNG / BLOK',
+          ['Kampung / Blok', 'Jumlah Bidang', 'Produktif (m²)', 'Tidak Produktif (m²)', 'Pemukiman (m²)', 'Total Luas (m²)'],
+          [28, 14, 17, 19, 17, 17],
+          ['l', 'i', 'n', 'n', 'n', 'n'],
+          Object.keys(rekap).sort().map(b => { const r = rekap[b]; return [b, r.n, r.p, r.np, r.pm, r.p + r.np + r.pm]; }));
+
+        const buf = await wb.xlsx.writeBuffer();
+        const url = URL.createObjectURL(new Blob([buf], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }));
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `SIPERTA_Gunungsari_${(blokSel || 'Semua').replace(/[^\w-]+/g, '_')}_${new Date().toISOString().slice(0, 10)}.xlsx`;
+        document.body.appendChild(a); a.click(); a.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 3000);
+      } catch (err) {
+        console.error('Gagal mengekspor Excel:', err);
+        alert('Terjadi kesalahan saat membuat file Excel.');
+      }
     }
 
     function backupData() {
@@ -988,8 +1230,16 @@
         try {
           const imported = JSON.parse(evt.target.result);
           if(Array.isArray(imported)) {
-            tanahList = imported; autoSave(); renderAll(); switchTab('tab-ringkasan');
-            alert("Pemulihan Data (Restore) Berhasil Dilakukan!");
+            const mergeConfirm = confirm("PENTING: Pengaturan Pemulihan Data!\n\n▶ Klik [OK] untuk MENGGABUNGKAN data backup ini dengan data yang sudah ada.\n▶ Klik [Cancel] untuk MENIMPA (menghapus data lama & mengganti dengan data backup ini).");
+            if (mergeConfirm) {
+              let currentMaxId = tanahList.length > 0 ? Math.max(...tanahList.map(t => t.id || 0)) : new Date().getTime();
+              imported.forEach((item, index) => { item.id = currentMaxId + index + 1; tanahList.push(item); });
+              alert("Data berhasil DIGABUNGKAN secara aman!");
+            } else {
+              tanahList = imported;
+              alert("Data berhasil DIPULIHKAN (Data lama telah ditimpa)!");
+            }
+            autoSave(); renderAll(); switchTab('tab-ringkasan');
           } else alert("Format file JSON tidak valid.");
         } catch(err) { alert("Gagal membaca file Backup JSON."); }
       };
@@ -997,9 +1247,17 @@
       e.target.value = '';
     }
 
-    function formatAngka(num) {
-      return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    function formatAngka(num) { return (Number(num) || 0).toLocaleString('id-ID', { maximumFractionDigits: 2 }); }
+    function esc(v) { return String(v == null ? '' : v).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
+    function tglIndo() {
+      const m = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+      const d = new Date();
+      return `${d.getDate()} ${m[d.getMonth()]} ${d.getFullYear()}`;
+    }
+    function sortedList(a) {
+      return a.slice().sort((x, y) => (x.blok || '').localeCompare(y.blok || '', 'id') || (x.nama || '').localeCompare(y.nama || '', 'id'));
     }
   </script>
-</body>
-</html>
+
+
+</body></html>
