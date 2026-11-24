@@ -43,10 +43,10 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
       }
     }
   </style>
-  <script src="./SIPERTA GUNUNGSARI_files/xlsx.full.min.js.download"></script>
-  <script src="./SIPERTA GUNUNGSARI_files/exceljs.min.js.download"></script>
-  <script src="./SIPERTA GUNUNGSARI_files/3.4.17"></script>
-  <script src="./SIPERTA GUNUNGSARI_files/chart.umd.min.js.download"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js"></script>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 
     <style>
       @keyframes pan-bg {
@@ -1385,7 +1385,7 @@ ate-800 min-h-screen flex flex-col font-sans antialiased">
 
     
     window.addEventListener('DOMContentLoaded', async () => {
-      loadHarga(); initCharts(); switchTab('tab-ringkasan');
+      loadHarga(); try { initCharts(); } catch (e) { console.error('Grafik gagal dimuat', e); } switchTab('tab-ringkasan');
       
       // Load dari LocalStorage terlebih dahulu agar aplikasi terasa cepat & tidak hilang saat refresh
       const savedData = localStorage.getItem(STORAGE_KEY);
@@ -1545,6 +1545,7 @@ ate-800 min-h-screen flex flex-col font-sans antialiased">
     }
 
     function updateCharts() {
+      if (!myDonutChart || !myStatusChart || !myBarChart) return;
       let lProd = 0, lNon = 0, lPem = 0;
       let sMilik = 0, sDesa = 0, sBengkok = 0, sWakaf = 0, sNegara = 0;
       tanahList.forEach(t => {
